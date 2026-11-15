@@ -1,68 +1,76 @@
-# SANDEEPA AI — Personal AI Assistant
+# 🤖 SANDEEPA AI — Personal AI Assistant
 
 An AI-powered personal assistant built with Python, Flask, and the OpenAI API.
 
-## Overview
+<p align="center">
+  <strong>Intelligent Conversations · Persistent Memory · Sinhala & English</strong>
+</p>
 
-SANDEEPA AI is a web-based personal AI assistant designed to provide helpful, natural conversations in Sinhala and English.
+---
 
-Powered by the OpenAI API, it offers an interactive chat experience with persistent conversation history, a memory center, optional web search, and multiple visual themes.
+## 🌟 Overview
 
-This project is developed as a practical AI Engineering learning project.
+SANDEEPA AI is a web-based personal AI assistant designed to provide helpful and natural conversations in Sinhala and English.
 
-## Features
+Built with Python, Flask, and the OpenAI API, it combines conversational AI with persistent chat history, personal memory management, optional web search, and a customizable user interface.
 
-- AI-powered conversations using the OpenAI API
-- Sinhala and English language support
-- Persistent chat history using SQLite
-- Create, load, and delete conversations
-- Personal Memory Center
-- Save and manage personal memories
-- Optional web search for current information
-- Dark, Light, and Warm themes
-- Responsive web interface
-- Basic error handling
-- Environment-based API key management
+This project is part of an ongoing journey into AI Engineering and intelligent software development.
 
-## Technologies Used
+## ✨ Features
 
-- Python
-- Flask
-- OpenAI API
-- OpenAI Python SDK
-- SQLite
-- HTML
-- CSS
-- JavaScript
-- python-dotenv
+- 🤖 AI-powered conversations using the OpenAI API
+- 🌐 Sinhala and English language support
+- 💬 Persistent conversation history using SQLite
+- 🗂️ Create, load, and delete conversations
+- 🧠 Personal Memory Center
+- 💾 Save and manage personal memories
+- 🔎 Optional web search for current information
+- 🎨 Dark, Light, and Warm themes
+- 📱 Responsive web interface
+- 🔐 Environment-based API key management
 
-## Project Structure
+## 🛠️ Technologies
+
+| Technology | Purpose |
+|---|---|
+| Python | Backend development |
+| Flask | Web application framework |
+| OpenAI API | AI intelligence |
+| SQLite | Persistent data storage |
+| HTML | Web structure |
+| CSS | Interface design |
+| JavaScript | Frontend functionality |
+| python-dotenv | Environment configuration |
+
+## 📁 Project Structure
 
 ```text
 SANDEEPA-AI-ASSISTANT/
 │
-├── .venv/
 ├── templates/
 │   ├── index.html
 │   └── memory.html
 │
-├── .env                  # Private environment variables
-├── .env.example          # Environment variable template
+├── .env.example
 ├── .gitignore
-├── app.py
-├── web_app.py            # Main Flask application
-├── database.py
-├── requirements.txt
 ├── README.md
-└── sandeepa_ai.db        # Local SQLite database
+├── app.py
+├── web_app.py
+├── database.py
+└── requirements.txt
 ```
 
-## Installation
+Local-only files such as `.env`, `.venv/`, and `sandeepa_ai.db` are not included in the public repository.
+
+## 🚀 Installation
 
 ### 1. Clone the repository
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
+git clone https://github.com/Sandeepawijesinghe/SANDEEPA-AI-ASSISTANT.git
+```
+
+```bash
 cd SANDEEPA-AI-ASSISTANT
 ```
 
@@ -72,7 +80,7 @@ cd SANDEEPA-AI-ASSISTANT
 python -m venv .venv
 ```
 
-### 3. Activate the virtual environment
+### 3. Activate the environment
 
 Windows PowerShell:
 
@@ -90,7 +98,7 @@ python -m pip install -r requirements.txt
 
 Create a `.env` file in the project root directory.
 
-Add your own OpenAI API key:
+Add your own configuration:
 
 ```env
 OPENAI_API_KEY=your_openai_api_key_here
@@ -98,7 +106,7 @@ OPENAI_MODEL=gpt-5.5
 ENABLE_WEB_SEARCH=true
 ```
 
-Never upload your real `.env` file or share your API key.
+Never publish your real API key.
 
 ### 6. Run the application
 
@@ -106,44 +114,52 @@ Never upload your real `.env` file or share your API key.
 python web_app.py
 ```
 
-Open your browser and visit:
+Open your browser:
 
 ```text
 http://127.0.0.1:5000
 ```
 
-## Usage
+## 💡 Usage
 
-1. Start SANDEEPA AI.
-2. Open the local web address in your browser.
+1. Start the SANDEEPA AI application.
+2. Open the local web address.
 3. Start a new conversation.
 4. Ask questions in Sinhala or English.
-5. Use the Memory Center to save and manage memories.
-6. Access previous conversations through Chat History.
-7. Change the interface theme according to your preference.
+5. Manage conversations through Chat History.
+6. Save personal information through the Memory Center.
+7. Customize the interface using the available themes.
 
-## Security
+## 🔐 Security
 
-- API keys are stored in a local `.env` file.
-- `.env` is excluded from Git using `.gitignore`.
-- Local SQLite database files are excluded from Git.
-- Never publish API keys, passwords, or private user data.
-- This project is currently intended for local development and personal use.
+- API keys are stored in local environment variables.
+- `.env` is excluded from Git.
+- Local database files are excluded from Git.
+- Private user data and credentials should never be published.
 
-Additional authentication and production security measures are required before public deployment.
+**Important:** This project is currently intended for local development and personal use. Additional authentication, deployment configuration, and production security measures are required before public deployment.
 
-## Current Development Status
+## 🗺️ Future Development
 
-SANDEEPA AI is an actively developed personal AI assistant.
+Planned improvements include:
 
-The current version includes the core chat interface, OpenAI integration, conversation history, memory management, and theme selection.
+- Advanced Retrieval-Augmented Generation (RAG)
+- Voice interaction
+- Improved long-term personalization
+- Advanced AI agent capabilities
+- Enhanced security and authentication
+- More intelligent assistant features
 
-Future improvements may include advanced RAG capabilities, voice interaction, improved personalization, and additional AI agent features.
+## 👨‍💻 Author
 
-## Author
+**Sandeepa Wijesinghe**
 
-**SANDEEPA AI PROJECT**
+AI & Agentic Engineering Learner
 
-Created as a practical AI Engineering learning project.
+Interested in Artificial Intelligence, Generative AI, Intelligent Systems, Mechatronics, and Robotics.
 
-**Project Focus:** Artificial Intelligence, Python Development, and Agentic AI.
+---
+
+<p align="center">
+  <strong>Building Intelligent Systems, One Project at a Time. 🚀</strong>
+</p>
