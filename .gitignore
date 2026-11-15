@@ -1,0 +1,27 @@
+
+# Environment variables and API secrets
+.env
+.env.*
+!.env.example
+
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Private databases and user data
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+
+# Local development files
+.DS_Store
+Thumbs.db

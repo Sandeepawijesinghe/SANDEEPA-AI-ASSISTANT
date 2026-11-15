@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SANDEEPA AI - Memory Manager</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #090d18;
+    color: #f4f6ff;
+    min-height: 100vh;
+    padding: 35px 20px;
+}
+
+.container {
+    max-width: 850px;
+    margin: auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: #8b83ff;
+}
+
+.back {
+    color: #c5c8e5;
+    text-decoration: none;
+    border: 1px solid #30364c;
+    padding: 10px 16px;
+    border-radius: 10px;
+}
+
+.hero {
+    margin-bottom: 30px;
+}
+
+.hero h1 {
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.hero h1 span {
+    color: #9188ff;
+}
+
+.hero p {
+    color: #9ba4bd;
+    line-height: 1.7;
+}
+
+.panel {
+    background: #121a2b;
+    border: 1px solid #27324b;
+    padding: 25px;
+    border-radius: 18px;
+    margin-bottom: 25px;
+}
+
+.panel h2 {
+    font-size: 19px;
+    margin-bottom: 18px;
+}
+
+textarea {
+    width: 100%;
+    min-height: 110px;
+    resize: vertical;
+    background: #0b1120;
+    color: white;
+    border: 1px solid #35405c;
+    border-radius: 12px;
+    padding: 15px;
+    font-size: 15px;
+    outline: none;
+}
+
+textarea:focus {
+    border-color: #9188ff;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 18px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.save-btn {
+    margin-top: 15px;
+    background: #8278ff;
+    color: white;
+}
+
+.save-btn:hover {
+    background: #6f64ed;
+}
+
+.memory-list {
+    display: grid;
+    gap: 14px;
+}
+
+.memory-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    background: #0c1424;
+    border: 1px solid #28334b;
+    border-radius: 12px;
+    padding: 17px;
+}
+
+.memory-content {
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.delete-btn {
+    background: #40212c;
+    color: #ff9baa;
+    flex-shrink: 0;
+}
+
+.delete-btn:hover {
+    background: #602938;
+}
+
+.status {
+    color: #aeb8d0;
+    margin-top: 14px;
+    font-size: 14px;
+}
+
+.empty {
+    color: #8994ae;
+    text-align: center;
+    padding: 30px 10px;
+    border: 1px dashed #34405a;
+    border-radius: 12px;
+}
+
+.count {
+    color: #aaa5ff;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+footer {
+    text-align: center;
+    color: #64708a;
+    margin-top: 40px;
+    font-size: 12px;
+}
+
+@media(max-width: 550px) {
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .panel {
+        padding: 18px;
+    }
+
+    .memory-item {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+    <div class="logo">SANDEEPA <span>AI</span></div>
+    <a class="back" href="/">← Back to Chat</a>
+</header>
+
+<section class="hero">
+    <h1>AI <span>Memory</span> Center</h1>
+    <p>
+        Your personal AI memory space.
+        Save important information and let SANDEEPA AI
+        use it in future conversations.
+    </p>
+</section>
+
+<section class="panel">
+    <h2>＋ Save a New Memory</h2>
+
+    <textarea
+        id="memoryInput"
+        maxlength="1000"
+        placeholder="Example: I am learning Python and want to become an AI Engineer."
+    ></textarea>
+
+    <button class="save-btn" onclick="saveMemory()">
+        Save Memory
+    </button>
+
+    <div class="status" id="status"></div>
+</section>
+
+<section class="panel">
+    <h2>Your Saved Memories</h2>
+
+    <div class="count" id="memoryCount">
+        Loading memories...
+    </div>
+
+    <div class="memory-list" id="memoryList"></div>
+</section>
+
+<footer>
+    SANDEEPA AI · PERSONAL MEMORY SYSTEM
+</footer>
+
+</div>
+
+<script>
+
+async function loadMemories() {
+    const list = document.getElementById("memoryList");
+    const count = document.getElementById("memoryCount");
+
+    try {
+        const response = await fetch("/memories");
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.error || "Could not load memories.");
+        }
+
+        list.innerHTML = "";
+
+        count.textContent = data.memories.length + " Saved Memories";
+
+        if (data.memories.length === 0) {
+            list.innerHTML =
+                '<div class="empty">No memories saved yet.</div>';
+            return;
+        }
+
+        data.memories.forEach(memory => {
+            const item = document.createElement("div");
+            item.className = "memory-item";
+
+            const content = document.createElement("div");
+            content.className = "memory-content";
+            content.textContent = memory.content;
+
+            const button = document.createElement("button");
+            button.className = "delete-btn";
+            button.textContent = "Delete";
+
+            button.addEventListener("click", () => {
+                deleteMemory(memory.id);
+            });
+
+            item.appendChild(content);
+            item.appendChild(button);
+
+            list.appendChild(item);
+        });
+
+    } catch (error) {
+        count.textContent = "Could not load memories.";
+    }
+}
+
+
+async function saveMemory() {
+    const input = document.getElementById("memoryInput");
+    const status = document.getElementById("status");
+
+    const content = input.value.trim();
+
+    if (!content) {
+        status.textContent = "Please enter a memory.";
+        return;
+    }
+
+    try {
+        const response = await fetch("/save-memory", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ content })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.error || "Could not save memory.");
+        }
+
+        input.value = "";
+        status.textContent = data.message;
+
+        await loadMemories();
+
+    } catch (error) {
+        status.textContent = error.message;
+    }
+}
+
+
+async function deleteMemory(id) {
+    if (!confirm("Are you sure you want to delete this memory?")) {
+        return;
+    }
+
+    try {
+        const response = await fetch("/delete-memory/" + id, {
+            method: "DELETE"
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.error || "Could not delete memory.");
+        }
+
+        document.getElementById("status").textContent = data.message;
+
+        await loadMemories();
+
+    } catch (error) {
+        document.getElementById("status").textContent = error.message;
+    }
+}
+
+loadMemories();
+
+</script>
+
+</body>
+</html>
