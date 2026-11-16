@@ -1,4 +1,3 @@
-
 # Environment variables and API secrets
 .env
 .env.*
@@ -16,8 +15,11 @@ __pycache__/
 
 # Private databases and user data
 *.db
+*.db-*
 *.sqlite
+*.sqlite-*
 *.sqlite3
+*.sqlite3-*
 
 # Logs
 *.log
