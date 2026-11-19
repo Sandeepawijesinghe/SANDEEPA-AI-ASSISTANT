@@ -42,6 +42,22 @@ This project is part of an ongoing journey into AI Engineering and intelligent s
 | JavaScript | Frontend functionality |
 | python-dotenv | Environment configuration |
 
+## 🖼️ Screenshots
+
+### Screenshot 1
+![SANDEEPA AI Screenshot 1](screenshots/SANDEEPA%20AI%20screenshots%201.png)
+
+### Screenshot 2
+![SANDEEPA AI Screenshot 2](screenshots/SANDEEPA%20AI%20screenshots%202.png)
+
+### Screenshot 3
+![SANDEEPA AI Screenshot 3](screenshots/SANDEEPA%20AI%20screenshots%203.png)
+
+### Screenshot 4
+![SANDEEPA AI Screenshot 4](screenshots/SANDEEPA%20AI%20screenshots.png)
+
+---
+
 ## 📁 Project Structure
 
 ```text
