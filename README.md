@@ -166,14 +166,15 @@ Planned improvements include:
 - Enhanced security and authentication
 - More intelligent assistant features
 
-## 👨‍💻 Author
+## 👨‍💻 Developer
 
 **Sandeepa Wijesinghe**
 
-AI & Agentic Engineering Learner
+Aspiring AI Engineer | Mechatronics & Robotics Enthusiast
 
-Interested in Artificial Intelligence, Generative AI, Intelligent Systems, Mechatronics, and Robotics.
+Interested in Artificial Intelligence, Agentic AI, Generative AI, Robotics, and Intelligent Automation.
 
+**GitHub:** [Sandeepawijesinghe](https://github.com/Sandeepawijesinghe)
 ---
 
 <p align="center">
